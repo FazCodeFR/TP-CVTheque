@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Spring Boot Thymeleaf Example</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<h1>Coucou</h1>
+
+<span th:text="${message} + ' ' +  ${userBean?.name ?: ' '}"></span>
+
+<ol>
+    <li th:each="user : ${userList}" th:style="${userBean == user} ? 'font-weight:bold' : ''" th:text="${user.name}">
+    </li>
+</ol>
+
+
+</body>
+
+</html>
