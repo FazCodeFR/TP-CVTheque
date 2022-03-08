@@ -12,7 +12,7 @@ import javax.transaction.Transactional
 
 @Entity
 @Table(name = "candidat")
-class CandidatBean(
+data class CandidatBean(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,

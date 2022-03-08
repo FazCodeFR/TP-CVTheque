@@ -3,7 +3,10 @@ package com.example.a2021_09_cdan_jakarta.api;
 import com.example.a2021_09_cdan_jakarta.model.CandidatBean;
 import com.example.a2021_09_cdan_jakarta.model.CandidatDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 // Page pour l'API
@@ -11,21 +14,46 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class MyApiController {
 
-//    private ArrayList<MessageBean> listMessages = new ArrayList<>();
+
+
 
     @Autowired
     private CandidatDao candidatDao ;
 
 
-    //http://localhost:8080/api/test
+
+    // Liste des candidats :
+    // http://localhost:8083/api/allCandidats
+
+    // Test Api :
+    // http://localhost:8083/api/test
+
+
+    //http://localhost:8083/api/test
     @GetMapping("/test")
-    public String testMethode() {
+    public String testApi() {
         System.out.println("/test");
-        CandidatBean candidatBean = new CandidatBean();
-        candidatBean.setNom("Dupont");
-        candidatBean.setPrenom("Jean");
-        return candidatDao.save(candidatBean).toString();
+        return "test";
     }
+
+    // POST : http://localhost:8083/api/allCandidats JSON : { "nom": "Yess", "prenom": "Paullll"}
+    @PostMapping("/addCandidat")
+    public CandidatBean addCandidat(@RequestBody CandidatBean candidatBean) {
+        System.out.println("/addCandidat");
+        return candidatDao.save(candidatBean);
+    }
+
+
+
+    //http://localhost:8083/api/all
+    @GetMapping("/all")
+    public List<CandidatBean> getAll() {
+        System.out.println("/all");
+        return candidatDao.findAll();
+    }
+
+
+
 
 //    //http://localhost:8080/testJson
 //    @GetMapping("/testJson")
