@@ -26,6 +26,7 @@ data class GloabalCvBean(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
+    var id_candidat: Long = 0,
     var age: Int = 0,
     var adresse: String = "",
     var adresseEmail: String = "",
@@ -34,12 +35,10 @@ data class GloabalCvBean(
 
 
 @Repository
-interface CandidatDao : JpaRepository<CandidatBean, Long> {
+interface CandidatDao : JpaRepository<CandidatBean, Long> {}
 
-    //fun findByName(name: String): CandidatBean?
-
-   // fun findByNameContains(name: String): List<CandidatBean>
-}
+@Repository
+interface GloabalCvDao : JpaRepository<GloabalCvBean, Long> {}
 
 
 //    fun getMessage(): String? {

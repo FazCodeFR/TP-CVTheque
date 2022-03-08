@@ -2,6 +2,8 @@ package com.example.a2021_09_cdan_jakarta.api;
 
 import com.example.a2021_09_cdan_jakarta.model.CandidatBean;
 import com.example.a2021_09_cdan_jakarta.model.CandidatDao;
+import com.example.a2021_09_cdan_jakarta.model.GloabalCvBean;
+import com.example.a2021_09_cdan_jakarta.model.GloabalCvDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +20,9 @@ public class MyApiController {
 
 
     @Autowired
-    private CandidatDao candidatDao ;
+    private CandidatDao candidatDao;
+    @Autowired
+    private GloabalCvDao gloabalCvDao;
 
 
 
@@ -43,6 +47,16 @@ public class MyApiController {
         return candidatDao.save(candidatBean);
     }
 
+    // POST : http://localhost:8083/api/allCandidats JSON : { "nom": "Yess", "prenom": "Paullll"}
+    @PostMapping("/addCandidatInfo")
+    public GloabalCvBean addCandidatInfo(
+            @RequestParam(value = "id", defaultValue = "0") Long idCandidat,
+            @RequestBody GloabalCvBean gloabalCvBean)
+    {
+        System.out.println("/addCandidatInfo");
+        gloabalCvBean.setId_candidat(idCandidat);
+        return gloabalCvDao.save(gloabalCvBean);
+    }
 
 
     //http://localhost:8083/api/all
