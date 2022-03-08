@@ -1,5 +1,6 @@
 package com.example.a2021_09_cdan_jakarta.web
 
+import com.example.a2021_09_cdan_jakarta.model.CandidatBean
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -7,6 +8,21 @@ import javax.servlet.http.HttpSession
 
 @Controller
 class MyWebController {
+
+    //http://localhost:8080/candidats
+    @GetMapping("/")
+    fun listeCandidat(model: Model, session: HttpSession): String {
+        println("liste des candidats")
+        //Nom du fichier HTML que l'on souhaite afficher
+
+        val list = arrayListOf(CandidatBean(1, "florian", "alcaraz"), CandidatBean(2, "florian", "alcaraz"))
+        model.addAttribute("listeCandidat", list)
+
+        return "index"
+    }
+
+
+
 
 //    val list = ArrayList<StudentBean>()
 
