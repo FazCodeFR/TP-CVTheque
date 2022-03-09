@@ -2,8 +2,8 @@ package com.example.a2021_09_cdan_jakarta.api;
 
 import com.example.a2021_09_cdan_jakarta.model.CandidatBean;
 import com.example.a2021_09_cdan_jakarta.model.CandidatDao;
-import com.example.a2021_09_cdan_jakarta.model.GloabalCvBean;
-import com.example.a2021_09_cdan_jakarta.model.GloabalCvDao;
+import com.example.a2021_09_cdan_jakarta.model.GlobalCvBean;
+import com.example.a2021_09_cdan_jakarta.model.GlobalCvDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ public class MyApiController {
     @Autowired
     private CandidatDao candidatDao;
     @Autowired
-    private GloabalCvDao gloabalCvDao;
+    private GlobalCvDao globalCvDao;
 
 
 
@@ -47,15 +47,18 @@ public class MyApiController {
         return candidatDao.save(candidatBean);
     }
 
-    // POST : http://localhost:8083/api/allCandidats JSON : { "nom": "Yess", "prenom": "Paullll"}
-    @PostMapping("/addCandidatInfo")
-    public GloabalCvBean addCandidatInfo(
-            @RequestParam(value = "id", defaultValue = "0") Long idCandidat,
-            @RequestBody GloabalCvBean gloabalCvBean)
+    // POST : http://localhost:8083/api/addCandidatInfo/9 JSON : { "nom": "Yess", "prenom": "Paullll"}
+    @PostMapping("/addCandidatInfo/{idCandidat}")
+    public GlobalCvBean addCandidatInfo(
+            @PathVariable("idCandidat") Long idCandidat,
+            @RequestBody GlobalCvBean globalCvBean)
     {
-        System.out.println("/addCandidatInfo");
-        gloabalCvBean.setId_candidat(idCandidat);
-        return gloabalCvDao.save(gloabalCvBean);
+        globalCvBean.setId_candidat(idCandidat);
+        System.out.println("/addCandidatInfo idCandidat=" + idCandidat);
+        System.out.println("/addCandidatInfo globalCvBean=" + globalCvBean);
+        return globalCvDao.save(globalCvBean);
+        // return null;
+        //ERREUR ICI A CORRIGER
     }
 
 

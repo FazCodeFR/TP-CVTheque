@@ -13,11 +13,8 @@ class MyWebController {
     @GetMapping("/")
     fun listeCandidat(model: Model, session: HttpSession): String {
         println("liste des candidats")
-        //Nom du fichier HTML que l'on souhaite afficher
-
         val list = arrayListOf(CandidatBean(1, "florian", "alcaraz"), CandidatBean(2, "florian", "alcaraz"))
         model.addAttribute("listeCandidat", list)
-
         return "index"
     }
 

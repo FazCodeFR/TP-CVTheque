@@ -21,15 +21,15 @@ data class CandidatBean(
 )
 
 @Entity
-@Table(name = "gloabalcv")
-data class GloabalCvBean(
+@Table(name = "globalcv")
+data class GlobalCvBean(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
     var id_candidat: Long = 0,
     var age: Int = 0,
     var adresse: String = "",
-    var adresseEmail: String = "",
+    var adresse_email: String = "",
     var telephone: String = "",
 )
 
@@ -38,7 +38,7 @@ data class GloabalCvBean(
 interface CandidatDao : JpaRepository<CandidatBean, Long> {}
 
 @Repository
-interface GloabalCvDao : JpaRepository<GloabalCvBean, Long> {}
+interface GlobalCvDao : JpaRepository<GlobalCvBean, Long> {}
 
 
 //    fun getMessage(): String? {
@@ -62,8 +62,8 @@ interface GloabalCvDao : JpaRepository<GloabalCvBean, Long> {}
 //    var id: Long = 0, var name: String = "", @Column(name = "password") var psw: String = ""
 //)
 //@Entity
-//@Table(name = "gloabalcv")
-//data class GloabalCvBean(
+//@Table(name = "globalcv")
+//data class GlobalCvBean(
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    var id: Long? = null,
