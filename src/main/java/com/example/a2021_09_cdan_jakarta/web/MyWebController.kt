@@ -3,6 +3,7 @@ package com.example.a2021_09_cdan_jakarta.web
 import com.example.a2021_09_cdan_jakarta.model.CandidatBean
 import com.example.a2021_09_cdan_jakarta.model.CandidatDao
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -34,8 +35,8 @@ class MyWebController {
         session: HttpSession
     ): String
     {
-        println("CV du candidat")
-        model.addAttribute("candidat", candidatDao?.findById(id) )
+        println("CV du candidat"+ candidatDao?.findByIdOrNull(id))
+        model.addAttribute("candidat", candidatDao?.findByIdOrNull(id))
         return "cv"
     }
 
