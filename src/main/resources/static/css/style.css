@@ -31,7 +31,9 @@ html {
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-    background: #ffdf00;
+    background: #dd5e89;
+    background: -webkit-linear-gradient(to left, #dd5e89, #f7bb97);
+    background: linear-gradient(to left, #dd5e89, #f7bb97);
     color: #666;
 }
 
@@ -186,7 +188,7 @@ body {
     line-height: normal;
     color: #686868;
     width: fit-content;
-    text-decoration: none;
+    text-decoration: underline;
 }
 .info a:hover {
     color: #004eff;
@@ -225,7 +227,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-right: 1rem;
-    text-decoration: none;
+    text-decoration: underline;
     color: inherit;
     cursor: pointer;
 }

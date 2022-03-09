@@ -9,6 +9,7 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.ResponseBody
+import javax.servlet.http.HttpServletResponse
 import javax.servlet.http.HttpSession
 
 
@@ -22,8 +23,9 @@ class MyWebController {
     @GetMapping("/")
     fun listeCandidat(model: Model, session: HttpSession): String {
         println("liste des candidats")
-        val list = arrayListOf(CandidatBean(1, "florian", "alcaraz"), CandidatBean(2, "florian", "alcaraz"))
-        model.addAttribute("listeCandidat", list)
+
+        val candidats = candidatDao!!.findAll()
+        model.addAttribute("listeCandidat", candidats)
         return "index"
     }
 
@@ -32,12 +34,18 @@ class MyWebController {
     fun cvCandidat(
         @PathVariable id : Long,
         model: Model,
-        session: HttpSession
-    ): String
+        httpServletResponse: HttpServletResponse
+    ): String?
     {
-        println("CV du candidat"+ candidatDao?.findByIdOrNull(id))
-        model.addAttribute("candidat", candidatDao?.findByIdOrNull(id))
-        return "cv"
+        var candidat = candidatDao?.findByIdOrNull(id)
+        println("CV du candidat "+ candidat)
+
+        if (candidat != null) {
+            model.addAttribute("candidat", candidat)
+            return "cv"
+        }
+        httpServletResponse.status = HttpServletResponse.SC_NOT_FOUND
+        return null
     }
 
     @GetMapping("/api/employees/{id}")

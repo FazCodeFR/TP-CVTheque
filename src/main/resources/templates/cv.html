@@ -10,14 +10,17 @@
 </head>
 <body>
 <div class="cv">
+    <span> <a href="/" >⬅️Listes des candidats</a> </span> <br>
     <div class="cv-row">
         <div class="cv-wrap">
-            <div class="cv-name" th:text="${candidat.prenom}"></div>
+            <div class="cv-name" th:text="${'CV de ' +#strings.capitalize(candidat.prenom) + ' ' + #strings.toUpperCase(candidat.nom)}"></div>
             <div class="cv-subname">Senior Frontend Developer</div>
             <div class="cv-content">
                 <div class="head-title">Expériences</div>
-                <div class="cv-content-item">
-                    <div class="title">Senior Frontend Developer</div>
+
+
+                <div class="cv-content-item" th:each="experience : ${candidat.cv_experiences}">
+                    <div class="title"><p th:text="${experience.titre}"></p></div>
                     <div class="subtitle">Enterprise Name</div>
                     <div class="time">Aug 2020 - Present - 1 year, Paris</div>
                     <div class="exprecince">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a ante pulvinar, consectetur ante et.</div>
@@ -65,10 +68,10 @@
                 <img src="https://image-aws-us-west-2.vsco.co/04d5df/155672998/5ee7bf4f43a34b5b3c000002/720x960/vsco5ee7bf53b94de.jpg" alt="" />
             </div>
             <div class="info">
-                <p th:text="${candidat.global_cv.age}"></p>
-                <p th:text="${candidat.global_cv.adresse}"></p>
-                <p><a href="mailto:info@ahmetaksungur.com" th:text="${candidat.global_cv.adresse_email}"></a></p>
-                <p><a href="tel:+905555554444" th:text="${candidat.global_cv.telephone}"></a></p>
+                <p target="_blank" th:text="${candidat.date_naiss}+' ans'"></p>
+                <p><a target="_blank" th:href="'https://www.google.com/maps/search/' + ${candidat.adresse}" th:text="${candidat.adresse}"></a></p>
+                <p><a target="_blank" th:href="${'mailto:' + candidat.email}" th:text="${candidat.email}"></a></p>
+                <p><a target="_blank" th:href="${'tel:' + candidat.telephone}" th:text="${candidat.telephone}"></a></p>
                 <p></p>
             </div>
             <div class="cv-skills">

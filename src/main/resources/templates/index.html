@@ -34,7 +34,7 @@
         <header class="py-2">
             <h1 class="display-4">Projet Kotlin : </h1>
             <h1 class="display-4"><i class="fas fa-list"></i>  Liste des candidats </h1>
-            <p class="font-italic mb-1"> Nombres de candidats <strong th:text="${#lists.size(listeCandidat)}">  </strong> candidat(s) </p>
+            <p class="font-italic mb-1" th:if="${not #lists.isEmpty(listeCandidat)}"> Nombres de candidats : <strong th:text="${#lists.size(listeCandidat)}">  </strong> candidat(s) </p>
         </header>
 
         <div class="row">
@@ -51,6 +51,14 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <div th:if="${#lists.isEmpty(listeCandidat)}">
+                                <tr>
+                                    <td colspan="4"> <p>Aucune candidat enregistrer</p></td>
+                                </tr>
+
+
+                            </div>
+
                             <tr th:each="candidat : ${listeCandidat}">
                                 <th scope="row"><p th:text="${candidat.id}"></p></th>
                                 <td><p th:text="${candidat.nom}"></p></td>

@@ -19,28 +19,35 @@ data class CandidatBean(
     var id: Long? = null,
     var nom: String = "",
     var prenom: String = "",
+    var date_naiss: String = "",
+    var adresse: String = "",
+    var email: String = "",
+    var telephone: String = "",
 
-    //    @OneToMany
-    //    @JoinColumn(name = "id_candidat")
-    //    var listeglobalcv: List<GlobalCvBean>? = null,
 
-    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
-    var global_cv: GlobalCvBean? = null
+    @OneToMany
+    @JoinColumn(name = "id_candidat")
+    var cv_experiences: List<CvExperienceBean>? = null,
 
+    //    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    //    @JoinColumn(name = "id")
+    //    var cv_experience: CvExperienceBean? = null
 )
 
 @Entity
-@Table(name = "globalcv")
-data class GlobalCvBean(
+@Table(name = "cv_experience")
+data class CvExperienceBean(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
     var id_candidat: Long = 0,
-    var age: Int = 0,
-    var adresse: String = "",
-    var adresse_email: String = "",
-    var telephone: String = "",
+    var titre: String = "",
+    var date_debut: String = "",
+    var date_fin: String = "",
+    var description: String = "",
+    var entreprise: String = "",
+    var ville: String = "",
+    var type_contrat: String = "",
 )
 
 
@@ -48,7 +55,7 @@ data class GlobalCvBean(
 interface CandidatDao : JpaRepository<CandidatBean, Long> {}
 
 @Repository
-interface GlobalCvDao : JpaRepository<GlobalCvBean, Long> {}
+interface CvExperienceDao : JpaRepository<CvExperienceBean, Long> {}
 
 
 //    fun getMessage(): String? {
