@@ -15,9 +15,19 @@ import javax.transaction.Transactional
 data class CandidatBean(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     var id: Long? = null,
     var nom: String = "",
     var prenom: String = "",
+
+    //    @OneToMany
+    //    @JoinColumn(name = "id_candidat")
+    //    var listeglobalcv: List<GlobalCvBean>? = null,
+
+    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
+    var global_cv: GlobalCvBean? = null
+
 )
 
 @Entity
