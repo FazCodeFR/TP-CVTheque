@@ -1,13 +1,21 @@
 package com.example.a2021_09_cdan_jakarta.web
 
 import com.example.a2021_09_cdan_jakarta.model.CandidatBean
+import com.example.a2021_09_cdan_jakarta.model.CandidatDao
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.ResponseBody
 import javax.servlet.http.HttpSession
+
 
 @Controller
 class MyWebController {
+
+    @Autowired
+    private val candidatDao: CandidatDao? = null
 
     //http://localhost:8080/candidats
     @GetMapping("/")
@@ -18,8 +26,24 @@ class MyWebController {
         return "index"
     }
 
+    //http://localhost:8080/cv?id=16
+    @GetMapping("/candidat/{id}")
+    fun cvCandidat(
+        @PathVariable id : Long,
+        model: Model,
+        session: HttpSession
+    ): String
+    {
+        println("CV du candidat")
+        model.addAttribute("candidat", candidatDao?.findById(id) )
+        return "cv"
+    }
 
-
+    @GetMapping("/api/employees/{id}")
+    @ResponseBody
+    fun getEmployeesById(@PathVariable id: String): String? {
+        return "ID: $id"
+    }
 
 //    val list = ArrayList<StudentBean>()
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV</title>
 
-    <link href="C:\Users\Flori\Downloads\CVTheque-master\CVTheque-master\src\main\resources\static\css\style.css" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <div class="cv">
@@ -65,10 +65,10 @@
                 <img src="https://image-aws-us-west-2.vsco.co/04d5df/155672998/5ee7bf4f43a34b5b3c000002/720x960/vsco5ee7bf53b94de.jpg" alt="" />
             </div>
             <div class="info">
-                <p th:text="${candidat.age}"></p>
-                <p th:text="${candidat.adresse}"></p>
-                <p><a href="mailto:info@ahmetaksungur.com" th:text="${candidat.adresseEmail}"></a></p>
-                <p><a href="tel:+905555554444" th:text="${candidat.telephone}"></a></p>
+                <p th:text="${candidat.global_cv.age}"></p>
+                <p th:text="${candidat.global_cv.adresse}"></p>
+                <p><a href="mailto:info@ahmetaksungur.com" th:text="${candidat.global_cv.adresse_email}"></a></p>
+                <p><a href="tel:+905555554444" th:text="${candidat.global_cv.telephone}"></a></p>
                 <p></p>
             </div>
             <div class="cv-skills">
