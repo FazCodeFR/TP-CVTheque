@@ -29,6 +29,18 @@ data class CandidatBean(
     @JoinColumn(name = "id_candidat")
     var cv_experiences: List<CvExperienceBean>? = null,
 
+    @OneToMany
+    @JoinColumn(name = "id_candidat")
+    var cv_formation: List<CvFormationBean>? = null,
+
+    @OneToMany
+    @JoinColumn(name = "id_candidat")
+    var cv_competence_principale: List<CvCompetencePrincipaleBean>? = null,
+
+    @OneToMany
+    @JoinColumn(name = "id_candidat")
+    var cv_competence_secondaire: List<CvCompetenceSecondaireBean>? = null,
+
     //    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     //    @JoinColumn(name = "id")
     //    var cv_experience: CvExperienceBean? = null
@@ -47,15 +59,53 @@ data class CvExperienceBean(
     var description: String = "",
     var entreprise: String = "",
     var ville: String = "",
-    var type_contrat: String = "",
+    var type_contrat: String = ""
 )
 
+@Entity
+@Table(name = "cv_formation")
+data class CvFormationBean(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null,
+    var id_candidat: Long = 0,
+    var titre: String = "",
+    var date_debut: String = "",
+    var date_fin: String = "",
+    var ecole: String = "",
+    var ville: String = ""
+)
+
+@Entity
+@Table(name = "cv_competence_principale")
+data class CvCompetencePrincipaleBean(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null,
+    var id_candidat: Long = 0,
+    var titre: String = ""
+)
+
+@Entity
+@Table(name = "cv_competence_secondaire")
+data class CvCompetenceSecondaireBean(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null,
+    var id_candidat: Long = 0,
+    var titre: String = ""
+)
 
 @Repository
 interface CandidatDao : JpaRepository<CandidatBean, Long> {}
-
 @Repository
 interface CvExperienceDao : JpaRepository<CvExperienceBean, Long> {}
+@Repository
+interface CvFormationDao : JpaRepository<CvFormationBean, Long> {}
+@Repository
+interface CvCompetencePrincipaleDao : JpaRepository<CvCompetencePrincipaleBean, Long> {}
+@Repository
+interface CvCompetenceSecondaireDao : JpaRepository<CvCompetenceSecondaireBean, Long> {}
 
 
 //    fun getMessage(): String? {
