@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "209c1f00-ecd7-4c90-a66c-6b3773d90406",
+		"name": "Projet Kotlin Candidat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add candidat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nom\": \"Duhaut\",\r\n    \"prenom\": \"Paulier\",\r\n    \"date_naiss\": \"05/01/2000\",\r\n    \"adresse\": \"Rue du Superprof\",\r\n    \"email\": \"leo@gmail.com\",\r\n    \"telephone\": \"0671230605\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/addCandidat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"addCandidat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nom\": \"Yess\",\r\n    \"prenom\": \"Paullll\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Expérience Candidat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titre\": \"montitre\",\r\n    \"date_debut\": \"01/02/2022\",\r\n    \"date_fin\": \"01/03/2022\",\r\n    \"description\": \" creation site front\",\r\n    \"entreprise\": \"CGI\",\r\n    \"ville\": \"Toulouse\",\r\n    \"type_contrat\": \"Alternance\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/addExperience/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"addExperience",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add formationCandidat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titre\": \"montitre\",\r\n    \"date_debut\": \"01/02/2022\",\r\n    \"date_fin\": \"01/03/2022\",\r\n    \"description\": \" creation site front\",\r\n    \"entreprise\": \"CGI\",\r\n    \"ville\": \"Toulouse\",\r\n    \"type_contrat\": \"Alternance\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/addExperience/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"addExperience",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get candidat",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"age\": 21,\r\n    \"adresse\": \"rue toto\",\r\n    \"adresse_email\": \"leo@gmail.com\",\r\n    \"telephone\" : \"0671234322\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/getCandidat/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"getCandidat",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all candidat",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"age\": 21,\r\n    \"adresse\": \"rue toto\",\r\n    \"adresse_email\": \"leo@gmail.com\",\r\n    \"telephone\" : \"0671234322\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
