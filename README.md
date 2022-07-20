@@ -5,7 +5,7 @@
 
 TP : CVThèque en Kotlin (CDAN IPI 2022)
 
-Sur le cours 
+Sur le cours IPRM200 - Débuter avec Kotlin - Débuter avec Kotlin
 
 Par l'intervenant Anthony M.
 
